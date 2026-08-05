@@ -24,6 +24,31 @@
             </button>
         </div>
     </header>
+
+    <!-- Announcement -->
+    <div class="announcement-bar" id="announcementBar">
+        <div class="container announcement-inner">
+            <div class="announcement-icon">🔔</div>
+            <div class="announcement-track">
+                <div class="announcement-scroll">
+                    <span>📢 Class Test 1 will be on Wednesday, 2nd September 2026, 7-8 PM</span>
+                    <!-- <span class="sep">•</span>
+                    <span>📚 New lecture slides on "Introduction to Programming and the C Language" are now available</span>
+                    <span class="sep">•</span>
+                    <span>🗓️ Class Test 2 scheduled for Thursday, 29 October 2026, 7–8 PM (tentative)</span>
+                    <span class="sep">•</span>
+                    <span>📢 Class Test 1 scheduled for Wednesday, 2nd September 2026, 7–8 PM (tentative)</span>
+                    <span class="sep">•</span>
+                    <span>📚 New lecture slides on "Introduction to Programming and the C Language" are now available</span>
+                    <span class="sep">•</span>
+                    <span>🗓️ Class Test 2 scheduled for Thursday, 29 October 2026, 7–8 PM (tentative)</span> -->
+                </div>
+            </div>
+            <span class="announcement-badge">New</span>
+            <button class="announcement-close" id="announcementClose" title="Dismiss announcement" aria-label="Dismiss announcement">✕</button>
+        </div>
+    </div>
+
     <div class="overlay" id="overlay"></div>
     <main class="container">
         <div class="layout">
@@ -315,7 +340,7 @@
                             <tbody>
                                 <tr>
                                     <td>Class Test 1</td>
-                                    <td> <b>Wednesday, 2nd September 2026, 7-8 PM </b> (tentative)</td>
+                                    <td> <b>Wednesday, 2nd September 2026, 7-8 PM </b></td>
                                     <td>
                                         <!-- <div class="test-links">
                                     <a href="slides/ct1-seating.pdf">Seating Arrangement</a>
@@ -365,6 +390,16 @@
         &#8679;
     </button>
     <script>
+        const announcementBar = document.getElementById("announcementBar");
+        const announcementClose = document.getElementById("announcementClose");
+
+        announcementClose.addEventListener("click", () => {
+            announcementBar.classList.add("hide");
+            announcementBar.addEventListener("animationend", () => {
+                announcementBar.style.display = "none";
+            }, { once: true });
+        });
+
         const links = [...document.querySelectorAll(".side-nav a")];
 
         const menu = document.getElementById("menuToggle");

@@ -82,6 +82,195 @@ body {
 }
 
 /* ===========================
+   Announcement Bar
+=========================== */
+
+.announcement-bar {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #d4a017, #f8d76b, #d4a017);
+  background-size: 200% 100%;
+  animation: shimmer 6s linear infinite;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.announcement-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+}
+
+.announcement-icon {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  animation: ring 2.4s ease-in-out infinite;
+}
+
+.announcement-track {
+  flex: 1 1 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 24px,
+    black calc(100% - 24px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 24px,
+    black calc(100% - 24px),
+    transparent 100%
+  );
+}
+
+.announcement-scroll {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 22s linear infinite;
+}
+
+.announcement-scroll span {
+  color: var(--primary-dark);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
+}
+
+.announcement-scroll .sep {
+  display: inline-block;
+  margin: 0 18px;
+  opacity: 0.55;
+  font-weight: 400;
+}
+
+.announcement-badge {
+  flex: 0 0 auto;
+  background: var(--primary);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.announcement-close {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(18, 53, 91, 0.12);
+  color: var(--primary-dark);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.announcement-close:hover {
+  background: var(--primary-dark);
+  color: white;
+  transform: rotate(90deg);
+}
+
+.announcement-bar.hide {
+  animation: collapse 0.35s ease forwards;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes ring {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(-14deg);
+  }
+  20% {
+    transform: rotate(12deg);
+  }
+  30% {
+    transform: rotate(-8deg);
+  }
+  40% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes collapse {
+  from {
+    max-height: 60px;
+    opacity: 1;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .announcement-inner {
+    padding: 10px 0;
+    gap: 10px;
+  }
+
+  .announcement-badge {
+    display: none;
+  }
+
+  .announcement-scroll span {
+    font-size: 0.85rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .announcement-bar,
+  .announcement-icon,
+  .announcement-scroll {
+    animation: none;
+  }
+}
+
+/* ===========================
    Cards
 =========================== */
 
